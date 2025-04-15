@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { ThemeProvider } from "../components/theme-provider";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import {
   AnimatePresence,
@@ -72,7 +71,7 @@ export default function Portfolio() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [sections]);
+  }, [sectionRefs]);
 
   return (
     <ThemeProvider
@@ -545,8 +544,8 @@ const About = ({ ref }: AboutProps) => {
             <p className="text-gray-300 leading-relaxed">
               I am a passionate Full Stack Developer with over 2 years of
               experience crafting digital experiences that users love. My
-              journey in tech started when I built my first website at 18, and
-              I've been hooked ever since.
+              journey in tech started when I built my first website at 18, and I
+              have been hooked ever since.
             </p>
             <p className="text-gray-300 leading-relaxed">
               I specialize in building modern web applications using React,
