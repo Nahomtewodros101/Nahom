@@ -542,16 +542,26 @@ const About = ({ ref }: AboutProps) => {
               Who am I?
             </h3>
             <p className="text-gray-300 leading-relaxed">
-              I am a passionate Full Stack Developer with over 2 years of
-              experience crafting digital experiences that users love. My
-              journey in tech started when I built my first website at 18, and I
-              have been hooked ever since.
-            </p>
-            <p className="text-gray-300 leading-relaxed">
               I specialize in building modern web applications using React,
               Next.js, Node.js, and various other technologies. I am constantly
               learning and exploring new tools to stay at the cutting edge of
               web development.
+            </p>
+            <br />
+            <p className="text-2xl font-semibold text-purple-400 ">
+              <span className="text-white  font-extrabold text-4xl ">
+                Coding...
+              </span>
+              Saves Lives
+            </p>
+            <p className="text-gray-300 leading-relaxed">
+              I am a passionate Full Stack Developer with over 2 years of
+              experience crafting digital experiences that users love. <br />
+              My journey in tech started when I met my current colleges |
+              Executives at my lowest possible level in life and they introduced
+              me into programming. been hooked ever since and cant literally
+              stop learning and evolving my tech skills and my life for the
+              better.
             </p>
             <p className="text-gray-300 leading-relaxed">
               When I am not coding, you can find me exploring nature, taking
