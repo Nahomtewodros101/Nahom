@@ -9,8 +9,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  Moon,
-  Sun,
   User,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
@@ -27,7 +25,6 @@ import Link from "next/link";
 const isBrowser = typeof window !== "undefined";
 
 export default function Portfolio() {
-  const { setTheme, theme } = useTheme();
   const [activeSection, setActiveSection] = useState("home");
   const sections: Array<keyof typeof sectionRefs> = [
     "home",
@@ -120,7 +117,6 @@ const Header = ({
   sectionRefs,
   sections,
 }: HeaderProps) => {
-  const { setTheme, theme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -238,7 +234,7 @@ const Hero = ({ ref }: HeroProps) => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Hello, I'm
+              Hello, I am
             </motion.div>
             <motion.h1
               className="text-5xl md:text-7xl font-bold"
@@ -549,17 +545,17 @@ const About = ({ ref }: AboutProps) => {
             <p className="text-gray-300 leading-relaxed">
               I am a passionate Full Stack Developer with over 2 years of
               experience crafting digital experiences that users love. My
-              journey in tech started when I built my first website at 15, and
+              journey in tech started when I built my first website at 18, and
               I've been hooked ever since.
             </p>
             <p className="text-gray-300 leading-relaxed">
               I specialize in building modern web applications using React,
-              Next.js, Node.js, and various other technologies. I'm constantly
+              Next.js, Node.js, and various other technologies. I am constantly
               learning and exploring new tools to stay at the cutting edge of
               web development.
             </p>
             <p className="text-gray-300 leading-relaxed">
-              When I'm not coding, you can find me exploring nature, taking
+              When I am not coding, you can find me exploring nature, taking
               photographs, or enjoying a good book.
             </p>
 
@@ -571,7 +567,7 @@ const About = ({ ref }: AboutProps) => {
               transition={{ delay: 0.3 }}
             >
               <div>
-                <h4 className="text-lg font-medium text-purple-300">Name:</h4>
+                <h4 className="text-lg font-medium text-purple-300">Name</h4>
                 <p className="text-gray-400">Nahom Tewodros</p>
               </div>
               <div>
@@ -920,7 +916,7 @@ const Testimonials = ({ ref }: TestimonialsProps) => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            Here's what some of my clients have to say about working with me.
+            Here is what some of my clients have to say about working with me.
           </motion.p>
         </div>
 
@@ -1233,7 +1229,7 @@ const Skills = ({ ref }: SkillsProps) => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            Here are my technical and soft skills that I've developed over the
+            Here are my technical and soft skills that I have developed over the
             years.
           </motion.p>
         </div>
