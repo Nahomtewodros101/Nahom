@@ -2,7 +2,12 @@
 
 import type React from "react";
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useInView,
+  AnimatePresence,
+  HTMLMotionProps,
+} from "framer-motion";
 import {
   Send,
   MapPin,
@@ -19,7 +24,6 @@ import { Button } from "@/components/ui/button";
 import { ThemeProvider } from "@/components/theme-provider";
 import dynamic from "next/dynamic";
 
-// Dynamically import the Map component with no SSR to avoid issues
 const MapWithNoSSR = dynamic(() => import("@/components/map"), {
   ssr: false,
 });
@@ -91,7 +95,7 @@ export default function ContactPage() {
                   Get in <span className="text-purple-400">Touch</span>
                 </h2>
                 <p className="text-gray-400 max-w-md">
-                  I'm always open to new opportunities and collaborations. Feel
+                  I am always open to new opportunities and collaborations. Feel
                   free to reach out if you have a question or just want to say
                   hi!
                 </p>
@@ -184,8 +188,8 @@ export default function ContactPage() {
                         Message Sent!
                       </h3>
                       <p className="text-gray-300">
-                        Thank you for reaching out. I'll get back to you as soon
-                        as possible.
+                        Thank you for reaching out. I will get back to you as
+                        soon as possible.
                       </p>
                     </motion.div>
                   ) : (
@@ -332,7 +336,7 @@ const ContactHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          Let's <span className="text-purple-400">Connect</span>
+          Let us <span className="text-purple-400">Connect</span>
         </motion.h1>
 
         <motion.div
@@ -348,22 +352,19 @@ const ContactHero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.5 }}
         >
-          Have a project in mind or want to explore opportunities? I'd love to
-          hear from you.
+          Have a project in mind or want to explore opportunities? I would love
+          to hear from you.
         </motion.p>
       </div>
     </section>
   );
 };
 
-// Fix the AnimatedInput component by adding proper TypeScript interface
-const AnimatedInput = ({
-  delay = 0,
-  ...props
-}: {
+interface AnimatedInputProps extends HTMLMotionProps<"input"> {
   delay?: number;
-  [key: string]: any;
-}) => {
+}
+
+const AnimatedInput = ({ delay = 0, ...props }: AnimatedInputProps) => {
   return (
     <div className="relative">
       <motion.input
@@ -384,7 +385,6 @@ const AnimatedInput = ({
   );
 };
 
-// Fix the ContactInfoItem component by adding proper TypeScript interface
 const ContactInfoItem = ({
   icon,
   title,
@@ -414,7 +414,6 @@ const ContactInfoItem = ({
   );
 };
 
-// Fix the SocialIcon component by adding proper TypeScript interface
 const SocialIcon = ({
   icon,
   href,
@@ -509,7 +508,7 @@ const MapSection = () => {
           </h2>
           <p className="text-white dark:text-gray-400 max-w-2xl mx-auto">
             Located in the heart of Addis Ababa, my office is easily accessible
-            and I'm always happy to schedule in-person meetings.
+            and I am always happy to schedule in-person meetings.
           </p>
         </div>
 

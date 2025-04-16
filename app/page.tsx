@@ -71,7 +71,7 @@ export default function Portfolio() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [sectionRefs]);
+  }, [sectionRefs, sections]);
 
   return (
     <ThemeProvider
