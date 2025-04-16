@@ -23,6 +23,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ThemeProvider } from "@/components/theme-provider";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const MapWithNoSSR = dynamic(() => import("@/components/map"), {
   ssr: false,
@@ -355,6 +356,11 @@ const ContactHero = () => {
           Have a project in mind or want to explore opportunities? I would love
           to hear from you.
         </motion.p>
+        <Link href="/">
+          <Button className="mt-6 bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg transition-all">
+            Back to Home
+          </Button>
+        </Link>
       </div>
     </section>
   );
