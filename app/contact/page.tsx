@@ -520,7 +520,7 @@ const MapSection = () => {
 
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6">
-            <div className="bg-black dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-black 0 p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-4">Office Address</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -608,7 +608,7 @@ const MapSection = () => {
               </ul>
             </div>
 
-            <div className="bg-black dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-black  p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-4">Transportation</h3>
               <ul className="space-y-2">
                 <li className="flex items-center">
