@@ -146,7 +146,7 @@ const Header = ({
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <motion.div
-          className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-300"
+          className="text-2xl font-bold bg-clip-text text-transparent bg-white"
           whileHover={{ scale: 1.05 }}
         >
           Nahom
@@ -171,13 +171,12 @@ const Header = ({
         </nav>
 
         <motion.div
-          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="hidden md:flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-full text-sm font-medium"
+          className="hidden md:flex items-center space-x-2 bg-white hover:bg-white/80 px-4 py-2 rounded-full text-sm font-bold  shadow-lg cursor-pointer transition duration-300"
         >
           <Link
             href="/contact"
-            className="flex items-center space-x-2 text-white"
+            className="flex items-center space-x-2 text-black"
           >
             <Mail size={16} />
             <span>Contact Me</span>
@@ -228,7 +227,7 @@ const Hero = ({ ref }: HeroProps) => {
         >
           <div className="space-y-2">
             <motion.div
-              className="text-purple-400 font-medium"
+              className="text-gray-700 font-bold"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -241,12 +240,12 @@ const Hero = ({ ref }: HeroProps) => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-300">
+              <span className="bg-clip-text text-transparent bg-white">
                 Nahom Tewodros
               </span>
             </motion.h1>
             <motion.h2
-              className="text-2xl md:text-3xl text-gray-300"
+              className="text-2xl md:text-3xl text-gray-700 font-medium"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -254,14 +253,18 @@ const Hero = ({ ref }: HeroProps) => {
               Full Stack Developer
             </motion.h2>
           </div>
-
+          <hr className="border-gray-700" />
           <motion.p
             className="text-gray-400 max-w-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
           >
-            I create stunning digital experiences with modern technologies.
+            I create
+            <span className="text-purple-600 pl-1">
+              Stunning digital experiences with modern tech.
+            </span>
+            <br />
             Specializing in building exceptional websites, applications, and
             everything in between.
           </motion.p>
@@ -569,7 +572,9 @@ const About = ({ ref }: AboutProps) => {
             </h1>
             <p className="text-gray-300 leading-relaxed">
               When I am not coding, you can find me exploring nature, taking
-              photographs, or enjoying a good book.
+              photographs, or enjoying a good book. I believe in the power of
+              technology to transform lives and am committed to using my skills
+              to make a positive impact.
             </p>
 
             <motion.div
@@ -1027,7 +1032,7 @@ const CV = ({ ref }: CVProps) => {
     {
       position: "Web Developer intern",
       company: "Truest Tech Agency",
-      period: "2017 - 2019",
+      period: "2020 - 20",
       description:
         "Built and maintained websites for various clients using JavaScript, HTML, and CSS. Implemented SEO best practices.",
     },
@@ -1037,7 +1042,7 @@ const CV = ({ ref }: CVProps) => {
     {
       degree: "Bsc in Computer Science",
       institution: "Unity University",
-      period: "2018 - 2022",
+      period: "2021 - 2025",
       description:
         "Learned web development using JavaScript, HTML, and CSS. Participated in coding competitions Lab Projects .",
     },
