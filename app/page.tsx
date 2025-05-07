@@ -740,6 +740,25 @@ const Projects = ({ ref }: ProjectsProps) => {
       link: "https://rise-up-chi.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/RiseUp.git",
     },
+    {
+      title: "Shopendaw ",
+      description:
+      "A modern e-commerce platform for premium clothing with seamless shopping experience.",
+      image: "/shop.jpg",
+      tech: [
+        "Next.js",
+        "Tailwind CSS",
+        "Shadcn ui",
+        "Typescript",
+        "Mongodb",
+        "vercel",
+        "Prisma",
+      ],
+      link: "https://shopendaw.vercel.app/",
+      githubLink: "https://github.com/Nahomtewodros101/shopendaw.git",
+    },
+    
+  
   ];
 
   return (
