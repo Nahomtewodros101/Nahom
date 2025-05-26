@@ -285,7 +285,7 @@ const Hero = ({ ref }: HeroProps) => {
       </div>
 
       <motion.div
-        className="absolute bottom-36 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-36 sm:bottom-10 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.5 }}
