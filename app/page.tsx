@@ -178,8 +178,7 @@ const Header = ({
             href="/contact"
             className="flex items-center space-x-2 text-black"
           >
-            <Mail size={16} />
-            <span>Contact Me</span>
+            <span>Contact</span>
           </Link>
         </motion.div>
       </div>
@@ -268,6 +267,11 @@ const Hero = ({ ref }: HeroProps) => {
             Specializing in building exceptional websites, applications, and
             everything in between.
           </motion.p>
+          <Link href="/contact">
+          <Button className="mt-6 bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg transition-all">
+           contact me!
+          </Button>
+        </Link>
         </motion.div>
 
         <motion.div
@@ -743,7 +747,7 @@ const Projects = ({ ref }: ProjectsProps) => {
     {
       title: "Shopendaw ",
       description:
-      "A modern e-commerce platform for premium clothing with seamless shopping experience.",
+        "A modern e-commerce platform for premium clothing with seamless shopping experience.",
       image: "/shop.jpg",
       tech: [
         "Next.js",
@@ -757,8 +761,6 @@ const Projects = ({ ref }: ProjectsProps) => {
       link: "https://shopendaw.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/shopendaw.git",
     },
-    
-  
   ];
 
   return (
@@ -784,7 +786,7 @@ const Projects = ({ ref }: ProjectsProps) => {
             viewport={{ once: true }}
           />
           <motion.p
-            className="max-w-2xl mx-auto text-gray-400"
+            className="max-w-2xl text-xl mx-auto text-gray-400"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
