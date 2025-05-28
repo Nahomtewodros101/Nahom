@@ -268,10 +268,10 @@ const Hero = ({ ref }: HeroProps) => {
             everything in between.
           </motion.p>
           <Link href="/contact">
-          <Button className="mt-6 bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg transition-all">
-           contact me!
-          </Button>
-        </Link>
+            <Button className="mt-6 bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg transition-all">
+              contact me!
+            </Button>
+          </Link>
         </motion.div>
 
         <motion.div
@@ -413,8 +413,6 @@ const HeroAnimation = () => {
 interface AboutProps {
   ref: React.MutableRefObject<HTMLDivElement | null>;
 }
-
-
 
 interface AboutProps {
   ref: React.MutableRefObject<HTMLDivElement | null>;
@@ -706,15 +704,6 @@ const Projects = ({ ref }: ProjectsProps) => {
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, 100]);
 
   const projects: Project[] = [
-    {
-      title: "Shoe Shop",
-      description:
-        "An e-commerce platform for premium footwear with seamless shopping experience.",
-      image: "/chamaa.png",
-      tech: ["Next.js", "Zustand", "Typescript", "Tailwind CSS", "shadCn ui"],
-      link: "https://chama-git-main-nahoms-projects-356562bd.vercel.app/",
-      githubLink: "https://github.com/Nahomtewodros101/Chama.git",
-    },
     {
       title: "Lead Generation Website",
       description:
