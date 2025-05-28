@@ -714,24 +714,15 @@ const Projects = ({ ref }: ProjectsProps) => {
       githubLink: "https://github.com/Nahomtewodros101/leadgeneth.git",
     },
     {
-        title: "Angles Touch",
+      title: "Angles Touch",
       description:
         "A website for an adult care organization in Spokane Valley, WA, USA. They use the website to show theme self to their customers and the customers can contact them directly from the website.",
       image: "/angle.png",
       tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
       link: "https://angelstouchafh.com/",
-      githubLink: "https://github.com/Nahomtewodros101",   
+      githubLink: "https://github.com/Nahomtewodros101",
     },
-    {
-        title: "Fundo",
-      description:
-        "Foundo is a pioneering card issuing company located in the UK, revolutionizing financial empowerment for businesses worldwide through seamless transactions and global reach",
-      image: "/fundo.svg",
-      tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
-      link: "https://foundo.io/",
-      githubLink: "https://github.com/Nahomtewodros101",   
-    },
-    
+
     {
       title: "RiseUp , A Qemem devs portfolio ",
       description:
@@ -1356,7 +1347,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-300 mb-4 md:mb-0">
-            Nahom.T
+            <Link href="/">Nahom.T</Link>
           </div>
 
           <div className="flex space-x-6 mb-4 md:mb-0">
