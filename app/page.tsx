@@ -757,6 +757,23 @@ const Projects = ({ ref }: ProjectsProps) => {
       link: "https://shopendaw.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/shopendaw.git",
     },
+    {
+      title: "Qmem CRM ",
+      description:
+        " A CRM system for Qemem devs to manage their clients and projects effectively.",
+      image: "/crm.png",
+      tech: [
+        "Next.js",
+        "Tailwind CSS",
+        "Shadcn ui",
+        "Typescript",
+        "Mongodb",
+        "vercel",
+        "Prisma",
+      ],
+      link: "https://shopendaw.vercel.app/",
+      githubLink: "https://github.com/Nahomtewodros101/Qmem-CRM.git",
+    },
   ];
 
   return (
