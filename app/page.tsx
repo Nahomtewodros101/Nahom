@@ -423,8 +423,7 @@ const Projects = ({ ref }: ProjectsProps) => {
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, 100]);
 
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  const [dragStartX, setDragStartX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
+
 
   const projects: Project[] = [
     {
