@@ -398,14 +398,15 @@ const HeroAnimation = () => {
   );
 };
 
-// Updated Projects Component
+// ... (Previous imports and components remain unchanged)
+
 interface Project {
   title: string;
   description: string;
-  tech: string[];
   image: string;
   link: string;
   githubLink: string;
+  tech: string[]; // Re-added tech stack
 }
 
 interface ProjectsProps {
@@ -422,6 +423,8 @@ const Projects = ({ ref }: ProjectsProps) => {
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, 100]);
 
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
 
   const projects: Project[] = [
     {
@@ -490,7 +493,7 @@ const Projects = ({ ref }: ProjectsProps) => {
         "Vercel",
         "Prisma",
       ],
-      link: "https://shopendaw.vercel.app/",
+      link: "https://qmem-crm.vercel.app/", // Placeholder link (replace with actual if available)
       githubLink: "https://github.com/Nahomtewodros101/Qmem-CRM.git",
     },
   ];
@@ -503,6 +506,29 @@ const Projects = ({ ref }: ProjectsProps) => {
     setActiveProjectIndex((prev) =>
       prev === 0 ? projects.length - 1 : prev - 1
     );
+  };
+
+  // Handle swipe navigation
+  const handleDragStart = (event: any, info: any) => {
+    setDragStartX(info.point.x);
+    setIsDragging(true);
+    console.log("Drag started at:", isDragging);
+  };
+
+  const handleDragEnd = (event: any, info: any) => {
+    setIsDragging(false);
+    const dragDistance = info.point.x - dragStartX;
+    const swipeThreshold = 50; // Minimum distance to consider it a swipe
+
+    if (Math.abs(dragDistance) > swipeThreshold) {
+      if (dragDistance < 0) {
+        // Swipe left -> Next project
+        handleNext();
+      } else {
+        // Swipe right -> Previous project
+        handlePrev();
+      }
+    }
   };
 
   return (
@@ -542,7 +568,14 @@ const Projects = ({ ref }: ProjectsProps) => {
         {/* MacBook Frame with Projects */}
         <div className="relative flex justify-center">
           <MacBookFrame className="w-full max-w-4xl">
-            <div className="h-full bg-gray-900 p-6 overflow-hidden">
+            <motion.div
+              className="h-full bg-gray-900 p-4 overflow-hidden relative"
+              drag="x" // Enable dragging for swipe
+              dragConstraints={{ left: 0, right: 0 }} // Constrain drag to prevent unwanted movement
+              onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+              dragElastic={0.2} // Add a slight elasticity effect
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeProjectIndex}
@@ -550,59 +583,57 @@ const Projects = ({ ref }: ProjectsProps) => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
                   transition={{ duration: 0.5 }}
-                  className="h-full flex flex-col justify-between"
+                  className="h-full flex flex-col"
                 >
                   <ProjectCard project={projects[activeProjectIndex]} />
                 </motion.div>
               </AnimatePresence>
-            </div>
-          </MacBookFrame>
 
-          {/* Navigation Controls */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-4 flex flex-col space-y-4">
-            <motion.button
-              onClick={handlePrev}
-              className="p-3 bg-purple-600 rounded-full text-white hover:bg-purple-700"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              {/* Navigation Arrows Inside the MacBook Screen */}
+              <motion.button
+                onClick={handlePrev}
+                className="absolute top-1/2 left-4 transform -translate-y-1/2 p-3 bg-purple-600/70 rounded-full text-white hover:bg-purple-700/90 transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                style={{ zIndex: 10 }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </motion.button>
-          </div>
-          <div className="absolute top-1/2 -translate-y-1/2 right-4 flex flex-col space-y-4">
-            <motion.button
-              onClick={handleNext}
-              className="p-3 bg-purple-600 rounded-full text-white hover:bg-purple-700"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </motion.button>
+              <motion.button
+                onClick={handleNext}
+                className="absolute top-1/2 right-4 transform -translate-y-1/2 p-3 bg-purple-600/70 rounded-full text-white hover:bg-purple-700/90 transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                style={{ zIndex: 10 }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </motion.button>
-          </div>
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </motion.button>
+            </motion.div>
+          </MacBookFrame>
 
           {/* Dots for Navigation */}
           <div className="absolute bottom-0 flex justify-center space-x-2 mt-4">
@@ -630,13 +661,14 @@ interface ProjectCardProps {
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <div className="group bg-gray-800/50 rounded-xl overflow-hidden border border-purple-900/50 hover:border-purple-500/50 transition-all duration-300 h-full flex flex-col">
-      <div className="relative overflow-hidden h-48">
+      {/* Image takes up most of the space */}
+      <div className="relative overflow-hidden flex-1">
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
-          width={500}
-          height={300}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          layout="fill"
+          objectFit="cover"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
           <div className="flex space-x-3">
@@ -662,20 +694,22 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
       </div>
 
-      <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-        <div>
-          <motion.a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xl font-semibold text-purple-300 hover:text-purple-400 hover:underline transition-colors group-hover:text-purple-400 group-hover:underline"
-            whileHover={{ scale: 1.05 }}
-          >
-            {project.title}
-          </motion.a>
-          <p className="text-gray-400 text-sm mt-2">{project.description}</p>
-        </div>
-        <div className="flex flex-wrap gap-2">
+      {/* Minimal space for Title, Description, Tech Stack, and Links */}
+      <div className="p-4 space-y-2">
+        <motion.a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-lg font-semibold text-purple-300 hover:text-purple-400 hover:underline transition-colors group-hover:text-purple-400 group-hover duration-300 text-center"
+          whileHover={{ scale: 1 }}
+        >
+          {project.title}
+        </motion.a>
+        <p className="text-gray-400 text-sm text-center">
+          {project.description}
+        </p>
+        {/* Tech Stack */}
+        <div className="flex flex-wrap justify-center gap-1">
           {project.tech.map((tech: string, i: number) => (
             <span
               key={i}
@@ -690,7 +724,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   );
 };
 
-// Existing About Component (unchanged)
 interface AboutProps {
   ref: React.MutableRefObject<HTMLDivElement | null>;
 }
