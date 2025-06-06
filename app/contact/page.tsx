@@ -19,6 +19,9 @@ import {
   Instagram,
   CheckCircle,
   Loader2,
+  Signal,
+  Battery,
+  Wifi,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -56,7 +59,6 @@ export default function ContactPage() {
     e.preventDefault();
     setFormStatus("submitting");
 
-    // Simulate form submission
     setTimeout(() => {
       setFormStatus("success");
       setFormState({
@@ -66,7 +68,6 @@ export default function ContactPage() {
         message: "",
       });
 
-      // Reset form status after 3 seconds
       setTimeout(() => {
         setFormStatus("idle");
       }, 3000);
@@ -84,7 +85,7 @@ export default function ContactPage() {
         <ContactHero />
 
         <div className="container mx-auto px-4 py-20">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-16 ">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -152,141 +153,191 @@ export default function ContactPage() {
               </div>
             </motion.div>
 
-            <div ref={formRef} className="relative">
-              <AnimatedBackground />
+            {/* iPhone Frame Wrapper */}
+            <div ref={formRef} className="relative flex justify-center">
+              <div className="relative w-[320px] h-[640px] bg-black rounded-[40px] border-4 border-gray-800 shadow-xl overflow-hidden">
+                {/* iPhone Status Bar */}
+                <div className="absolute top-0 left-0 right-0 h-6 bg-black flex justify-between items-center px-4 text-white text-xs">
+                  <div className="flex items-center gap-1">
+                    <span>9:41</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Signal size={12} className="text-white" />
+                    <Wifi size={12} className="text-white" />
+                    <Battery size={12} className="text-white" />
+                  </div>
+                </div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.7 }}
-                className="bg-gray-900/70 backdrop-blur-sm p-8 rounded-2xl border border-purple-900/50 relative z-10"
-              >
-                <h2 className="text-2xl font-bold mb-6">Send me a message</h2>
+                {/* iPhone Notch */}
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-black rounded-b-xl"></div>
 
-                <AnimatePresence mode="wait">
-                  {formStatus === "success" ? (
-                    <motion.div
-                      key="success"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      className="bg-purple-900/30 border border-purple-500/30 rounded-xl p-8 text-center space-y-4"
-                    >
-                      <div className="flex justify-center">
+                {/* Form Content */}
+                <div className="h-full pt-12 pb-8 px-4 overflow-y-auto bg-gray-900">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.7 }}
+                    className="relative z-10 space-y-4"
+                  >
+                    <h2 className="text-xl font-bold text-white text-center">
+                      Send me a message
+                    </h2>
+
+                    <AnimatePresence mode="wait">
+                      {formStatus === "success" ? (
                         <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 200,
-                            damping: 10,
-                          }}
-                        >
-                          <CheckCircle size={60} className="text-purple-400" />
-                        </motion.div>
-                      </div>
-                      <h3 className="text-xl font-semibold text-purple-300">
-                        Message Sent!
-                      </h3>
-                      <p className="text-gray-300">
-                        Thank you for reaching out. I will get back to you as
-                        soon as possible.
-                      </p>
-                    </motion.div>
-                  ) : (
-                    <motion.form
-                      key="form"
-                      onSubmit={handleSubmit}
-                      className="space-y-6"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <AnimatedInput
-                          type="text"
-                          name="name"
-                          placeholder="Your Name"
-                          value={formState.name}
-                          onChange={handleChange}
-                          required
-                          delay={0.1}
-                        />
-                        <AnimatedInput
-                          type="email"
-                          name="email"
-                          placeholder="Your Email"
-                          value={formState.email}
-                          onChange={handleChange}
-                          required
-                          delay={0.2}
-                        />
-                      </div>
-
-                      <AnimatedInput
-                        type="text"
-                        name="subject"
-                        placeholder="Subject"
-                        value={formState.subject}
-                        onChange={handleChange}
-                        required
-                        delay={0.3}
-                      />
-
-                      <div className="relative">
-                        <motion.textarea
-                          name="message"
-                          placeholder="Your Message"
-                          value={formState.message}
-                          onChange={handleChange}
-                          required
-                          rows={5}
-                          className="w-full bg-gray-800/50 border border-gray-700 focus:border-purple-500 rounded-lg p-4 text-white placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+                          key="success"
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: 0.4 }}
-                        />
-                        <motion.div
-                          className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-600 to-purple-400"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: "100%" }}
-                          transition={{ duration: 1.5, delay: 0.5 }}
-                          viewport={{ once: true }}
-                        />
-                      </div>
-
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
-                      >
-                        <Button
-                          type="submit"
-                          className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg flex items-center justify-center gap-2 transition-all"
-                          disabled={formStatus === "submitting"}
+                          exit={{ opacity: 0, y: -20 }}
+                          className="bg-purple-900/30 border border-purple-500/30 rounded-xl p-6 text-center space-y-4"
                         >
-                          {formStatus === "submitting" ? (
-                            <>
-                              <Loader2 className="animate-spin" size={18} />
-                              <span>Sending...</span>
-                            </>
-                          ) : (
-                            <>
-                              <Send size={18} />
-                              <span>Send Message</span>
-                            </>
-                          )}
-                        </Button>
-                      </motion.div>
-                    </motion.form>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                          <div className="flex justify-center">
+                            <motion.div
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              transition={{
+                                type: "spring",
+                                stiffness: 200,
+                                damping: 10,
+                              }}
+                            >
+                              <CheckCircle
+                                size={40}
+                                className="text-purple-400"
+                              />
+                            </motion.div>
+                          </div>
+                          <h3 className="text-lg font-semibold text-purple-300">
+                            Message Sent!
+                          </h3>
+                          <p className="text-gray-300 text-sm">
+                            Thank you for reaching out. I will get back to you
+                            soon.
+                          </p>
+                        </motion.div>
+                      ) : (
+                        <motion.form
+                          key="form"
+                          onSubmit={handleSubmit}
+                          className="space-y-4"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                        >
+                          <AnimatedInput
+                            type="text"
+                            name="name"
+                            placeholder="Your Name"
+                            value={formState.name}
+                            onChange={handleChange}
+                            required
+                            delay={0.1}
+                          />
+                          <AnimatedInput
+                            type="email"
+                            name="email"
+                            placeholder="Your Email"
+                            value={formState.email}
+                            onChange={handleChange}
+                            required
+                            delay={0.2}
+                          />
+                          <AnimatedInput
+                            type="text"
+                            name="subject"
+                            placeholder="Subject"
+                            value={formState.subject}
+                            onChange={handleChange}
+                            required
+                            delay={0.3}
+                          />
+                          <div className="relative">
+                            <motion.textarea
+                              name="message"
+                              placeholder="Your Message"
+                              value={formState.message}
+                              onChange={handleChange}
+                              required
+                              rows={4}
+                              className="w-full bg-gray-800/50 border border-gray-700 focus:border-purple-500 rounded-lg p-3 text-white placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500/50 text-sm"
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5, delay: 0.4 }}
+                            />
+                            <motion.div
+                              className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-purple-600 to-purple-400"
+                              initial={{ width: 0 }}
+                              whileInView={{ width: "100%" }}
+                              transition={{ duration: 1.5, delay: 0.5 }}
+                              viewport={{ once: true }}
+                            />
+                          </div>
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.5 }}
+                          >
+                            <Button
+                              type="submit"
+                              className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg flex items-center justify-center gap-2 transition-all text-sm"
+                              disabled={formStatus === "submitting"}
+                            >
+                              {formStatus === "submitting" ? (
+                                <>
+                                  <Loader2 className="animate-spin" size={16} />
+                                  <span>Sending...</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Send size={16} />
+                                  <span>Send Message</span>
+                                </>
+                              )}
+                            </Button>
+                          </motion.div>
+                        </motion.form>
+                      )}
+                    </AnimatePresence>
+
+                    {/* Social Icons at the Bottom */}
+                    <motion.div
+                      className="flex justify-center space-x-4 mt-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.6 }}
+                    >
+                      <SocialIcon
+                        icon={<Github size={20} />}
+                        href="https://github.com/Nahomtewodros101"
+                        delay={0.7}
+                      />
+                      <SocialIcon
+                        icon={<Linkedin size={20} />}
+                        href="https://www.linkedin.com/in/nahom-tewodros/"
+                        delay={0.8}
+                      />
+                      <SocialIcon
+                        icon={<Twitter size={20} />}
+                        href="https://x.com/NahomTewodros5"
+                        delay={0.9}
+                      />
+                      <SocialIcon
+                        icon={<Instagram size={20} />}
+                        href="https://instagram.com/nahom1o1"
+                        delay={1.0}
+                      />
+                    </motion.div>
+                  </motion.div>
+                </div>
+
+                {/* iPhone Home Bar */}
+                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-white/30 rounded-full"></div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Replace the static map with the interactive Leaflet map */}
         <MapSection />
       </div>
     </ThemeProvider>
@@ -299,8 +350,6 @@ const ContactHero = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black opacity-70" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" />
-
-        {/* Animated background elements */}
         <div className="absolute inset-0">
           {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
@@ -339,14 +388,12 @@ const ContactHero = () => {
         >
           Let us <span className="text-purple-400">Connect</span>
         </motion.h1>
-
         <motion.div
           className="h-1 w-20 bg-purple-500 mx-auto mb-6"
           initial={{ width: 0 }}
           animate={{ width: 80 }}
           transition={{ duration: 0.7, delay: 0.3 }}
         />
-
         <motion.p
           className="text-gray-300 max-w-lg mx-auto"
           initial={{ opacity: 0 }}
@@ -375,7 +422,7 @@ const AnimatedInput = ({ delay = 0, ...props }: AnimatedInputProps) => {
     <div className="relative">
       <motion.input
         {...props}
-        className="w-full bg-gray-800/50 border border-gray-700 focus:border-purple-500 rounded-lg p-4 text-white placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+        className="w-full bg-gray-800/50 border border-gray-700 focus:border-purple-500 rounded-lg p-3 text-white placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500/50 text-sm"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay }}
@@ -434,7 +481,7 @@ const SocialIcon = ({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-3 bg-gray-800 rounded-full text-gray-400 hover:text-white hover:bg-purple-900 transition-colors"
+      className="p-2 bg-gray-800 rounded-full text-gray-400 hover:text-white hover:bg-purple-900 transition-colors"
       whileHover={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -445,67 +492,9 @@ const SocialIcon = ({
   );
 };
 
-const AnimatedBackground = () => {
-  return (
-    <div className="absolute inset-0 -z-10 overflow-hidden">
-      {/* Animated circles */}
-      <motion.div
-        className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-purple-600/10 blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          x: [0, 30, 0],
-          y: [0, -30, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Number.POSITIVE_INFINITY,
-          repeatType: "reverse",
-        }}
-      />
-
-      <motion.div
-        className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-purple-800/10 blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          x: [0, -40, 0],
-          y: [0, 40, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Number.POSITIVE_INFINITY,
-          repeatType: "reverse",
-        }}
-      />
-
-      {/* Grid pattern */}
-      <svg
-        className="absolute inset-0 w-full h-full opacity-[0.015]"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern
-            id="grid"
-            width="40"
-            height="40"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M 40 0 L 0 0 0 40"
-              fill="none"
-              stroke="white"
-              strokeWidth="0.5"
-            />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-      </svg>
-    </div>
-  );
-};
-
 const MapSection = () => {
   return (
-    <section className="relative py-16 bg-black ">
+    <section className="relative py-16 bg-black">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -520,7 +509,7 @@ const MapSection = () => {
 
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6">
-            <div className="bg-black 0 p-6 rounded-lg shadow-md">
+            <div className="bg-black p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-4">Office Address</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -608,7 +597,7 @@ const MapSection = () => {
               </ul>
             </div>
 
-            <div className="bg-black  p-6 rounded-lg shadow-md">
+            <div className="bg-black p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-4">Transportation</h3>
               <ul className="space-y-2">
                 <li className="flex items-center">
@@ -640,7 +629,6 @@ const MapSection = () => {
           </div>
 
           <div>
-            {/* Import your MapComponent here */}
             <MapWithNoSSR />
           </div>
         </div>

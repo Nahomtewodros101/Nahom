@@ -8,11 +8,8 @@ export const metadata = {
   description: "A sleek portfolio to portray my work and skills",
 };
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
+const inter = Inter({ subsets: ["latin"], display: "swap" });
+
 
 export default function RootLayout({
   children,
@@ -20,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
