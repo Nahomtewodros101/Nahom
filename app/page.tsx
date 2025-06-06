@@ -509,13 +509,13 @@ const Projects = ({ ref }: ProjectsProps) => {
   };
 
   // Handle swipe navigation
-  const handleDragStart = (event: any, info: any) => {
+  const handleDragStart = (event: React.MouseEvent, info: any) => {
     setDragStartX(info.point.x);
     setIsDragging(true);
     console.log("Drag started at:", isDragging);
   };
 
-  const handleDragEnd = (event: any, info: any) => {
+  const handleDragEnd = (event: React.MouseEvent, info: any) => {
     setIsDragging(false);
     const dragDistance = info.point.x - dragStartX;
     const swipeThreshold = 50; // Minimum distance to consider it a swipe
