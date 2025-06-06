@@ -508,29 +508,6 @@ const Projects = ({ ref }: ProjectsProps) => {
     );
   };
 
-  // Handle swipe navigation
-  const handleDragStart = (event: React.MouseEvent, info: any) => {
-    setDragStartX(info.point.x);
-    setIsDragging(true);
-    console.log("Drag started at:", isDragging);
-  };
-
-  const handleDragEnd = (event: React.MouseEvent, info: any) => {
-    setIsDragging(false);
-    const dragDistance = info.point.x - dragStartX;
-    const swipeThreshold = 50; // Minimum distance to consider it a swipe
-
-    if (Math.abs(dragDistance) > swipeThreshold) {
-      if (dragDistance < 0) {
-        // Swipe left -> Next project
-        handleNext();
-      } else {
-        // Swipe right -> Previous project
-        handlePrev();
-      }
-    }
-  };
-
   return (
     <motion.section
       ref={ref}
@@ -572,8 +549,6 @@ const Projects = ({ ref }: ProjectsProps) => {
               className="h-full bg-gray-900 p-4 overflow-hidden relative"
               drag="x" // Enable dragging for swipe
               dragConstraints={{ left: 0, right: 0 }} // Constrain drag to prevent unwanted movement
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
               dragElastic={0.2} // Add a slight elasticity effect
             >
               <AnimatePresence mode="wait">
