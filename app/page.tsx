@@ -398,15 +398,13 @@ const HeroAnimation = () => {
   );
 };
 
-// ... (Previous imports and components remain unchanged)
-
 interface Project {
   title: string;
   description: string;
   image: string;
   link: string;
   githubLink: string;
-  tech: string[]; // Re-added tech stack
+  tech: string[];
 }
 
 interface ProjectsProps {
@@ -424,17 +422,7 @@ const Projects = ({ ref }: ProjectsProps) => {
 
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
 
-
   const projects: Project[] = [
-    {
-      title: "Lead Generation Website",
-      description:
-        "A conversion-focused website designed to capture and nurture potential customer leads.",
-      image: "/leadgen.png",
-      tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
-      link: "https://leadgeneth.vercel.app/",
-      githubLink: "https://github.com/Nahomtewodros101/leadgeneth.git",
-    },
     {
       title: "Angles Touch",
       description:
@@ -443,6 +431,23 @@ const Projects = ({ ref }: ProjectsProps) => {
       tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
       link: "https://angelstouchafh.com/",
       githubLink: "https://github.com/Nahomtewodros101",
+    },
+    {
+      title: "Qmem CRM",
+      description:
+        "A CRM system for Qemem Devs to manage their clients and projects effectively.",
+      image: "/crm.png",
+      tech: [
+        "Next.js",
+        "Tailwind CSS",
+        "Shadcn ui",
+        "Typescript",
+        "Mongodb",
+        "Vercel",
+        "Prisma",
+      ],
+      link: "https://qmem-crm-wine.vercel.app/",
+      githubLink: "https://github.com/Nahomtewodros101/Qmem-CRM.git",
     },
     {
       title: "RiseUp, A Qemem Devs Portfolio",
@@ -462,6 +467,16 @@ const Projects = ({ ref }: ProjectsProps) => {
       githubLink: "https://github.com/Nahomtewodros101/RiseUp.git",
     },
     {
+      title: "Lead Generation Website",
+      description:
+        "A conversion-focused website designed to capture and nurture potential customer leads.",
+      image: "/leadgen.png",
+      tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
+      link: "https://leadgeneth.vercel.app/",
+      githubLink: "https://github.com/Nahomtewodros101/leadgeneth.git",
+    },
+
+    {
       title: "Shopendaw",
       description:
         "A modern e-commerce platform for premium clothing with a seamless shopping experience.",
@@ -477,23 +492,6 @@ const Projects = ({ ref }: ProjectsProps) => {
       ],
       link: "https://shopendaw.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/shopendaw.git",
-    },
-    {
-      title: "Qmem CRM",
-      description:
-        "A CRM system for Qemem Devs to manage their clients and projects effectively.",
-      image: "/crm.png",
-      tech: [
-        "Next.js",
-        "Tailwind CSS",
-        "Shadcn ui",
-        "Typescript",
-        "Mongodb",
-        "Vercel",
-        "Prisma",
-      ],
-      link: "https://qmem-crm.vercel.app/", // Placeholder link (replace with actual if available)
-      githubLink: "https://github.com/Nahomtewodros101/Qmem-CRM.git",
     },
   ];
 
