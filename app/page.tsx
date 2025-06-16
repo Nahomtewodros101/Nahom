@@ -1127,9 +1127,9 @@ const CV = ({ ref }: CVProps) => {
         "Built and maintained websites for various clients using JavaScript, HTML, and CSS. Implemented SEO best practices.",
     },
     {
-      position: "English Teacher",
+      position: " Part time English Teacher",
       company: "MH Language University",
-      period: "2019 - 2020",
+      period: "2019 - 2023",
       description:
         "Taught English language skills to  students, focusing on communication, writing, and comprehension. Developed engaging lesson plans and assessments.",
     },
