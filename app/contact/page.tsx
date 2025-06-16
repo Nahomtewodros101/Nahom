@@ -1,3 +1,4 @@
+// app/contact/page.tsx
 "use client";
 
 import type React from "react";
@@ -59,19 +60,40 @@ export default function ContactPage() {
     e.preventDefault();
     setFormStatus("submitting");
 
-    setTimeout(() => {
-      setFormStatus("success");
-      setFormState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
       });
 
+      if (response.ok) {
+        setFormStatus("success");
+        setFormState({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+
+        setTimeout(() => {
+          setFormStatus("idle");
+        }, 3000);
+      } else {
+        setFormStatus("error");
+        setTimeout(() => {
+          setFormStatus("idle");
+        }, 3000);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormStatus("error");
       setTimeout(() => {
         setFormStatus("idle");
       }, 3000);
-    }, 1500);
+    }
   };
 
   return (
@@ -85,7 +107,7 @@ export default function ContactPage() {
         <ContactHero />
 
         <div className="container mx-auto px-4 py-20">
-          <div className="grid lg:grid-cols-2 gap-16 ">
+          <div className="grid lg:grid-cols-2 gap-16">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -216,6 +238,21 @@ export default function ContactPage() {
                             soon.
                           </p>
                         </motion.div>
+                      ) : formStatus === "error" ? (
+                        <motion.div
+                          key="error"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          className="bg-red-900/30 border border-red-500/30 rounded-xl p-6 text-center space-y-4"
+                        >
+                          <h3 className="text-lg font-semibold text-red-300">
+                            Error
+                          </h3>
+                          <p className="text-gray-300 text-sm">
+                            Failed to send message. Please try again later.
+                          </p>
+                        </motion.div>
                       ) : (
                         <motion.form
                           key="form"
@@ -344,6 +381,7 @@ export default function ContactPage() {
   );
 }
 
+// The rest of the components (ContactHero, AnimatedInput, ContactInfoItem, SocialIcon, MapSection) remain unchanged
 const ContactHero = () => {
   return (
     <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center overflow-hidden">

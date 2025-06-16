@@ -20,7 +20,7 @@ import {
   useTransform,
 } from "framer-motion";
 import Link from "next/link";
-import { MacBookFrame } from "../components/DeviceFrames"; // Import the MacBookFrame
+import { MacBookFrame } from "../components/DeviceFrames";
 
 const isBrowser = typeof window !== "undefined";
 
@@ -33,7 +33,7 @@ export default function Portfolio() {
     "testimonials",
     "cv",
     "skills",
-  ]; // Removed "blog"
+  ];
 
   const sectionRefs: Record<
     "home" | "about" | "projects" | "testimonials" | "cv" | "skills",
@@ -45,7 +45,7 @@ export default function Portfolio() {
     testimonials: useRef(null),
     cv: useRef(null),
     skills: useRef(null),
-  }; // Removed "blog" ref
+  };
 
   useEffect(() => {
     if (!isBrowser) return;
@@ -92,6 +92,7 @@ export default function Portfolio() {
         <main className="container mx-auto px-4 pt-20">
           <Hero ref={sectionRefs.home} />
           <About ref={sectionRefs.about} />
+          <Banner /> {/* Banner placed here between About and Projects */}
           <Projects ref={sectionRefs.projects} />
           <Testimonials ref={sectionRefs.testimonials} />
           <CV ref={sectionRefs.cv} />
@@ -187,7 +188,6 @@ const Header = ({
   );
 };
 
-// Existing Hero Component (unchanged)
 interface HeroProps {
   ref: React.MutableRefObject<HTMLDivElement | null>;
 }
@@ -256,7 +256,7 @@ const Hero = ({ ref }: HeroProps) => {
           </div>
           <hr className="border-gray-700" />
           <motion.p
-            className="text-gray-400 max-w-md"
+            className="text-white max-w-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
@@ -291,15 +291,7 @@ const Hero = ({ ref }: HeroProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.5 }}
-      >
-        <motion.div
-          className="w-8 h-12 border-2 border-purple-400 rounded-full flex justify-center p-1"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-        >
-          <motion.div className="w-1 h-3 bg-purple-400 rounded-full" />
-        </motion.div>
-      </motion.div>
+      ></motion.div>
     </section>
   );
 };
@@ -475,7 +467,6 @@ const Projects = ({ ref }: ProjectsProps) => {
       link: "https://leadgeneth.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/leadgeneth.git",
     },
-
     {
       title: "Shopendaw",
       description:
@@ -539,14 +530,13 @@ const Projects = ({ ref }: ProjectsProps) => {
           </motion.p>
         </div>
 
-        {/* MacBook Frame with Projects */}
         <div className="relative flex justify-center">
           <MacBookFrame className="w-full max-w-4xl">
             <motion.div
               className="h-full bg-gray-900 p-4 overflow-hidden relative"
-              drag="x" // Enable dragging for swipe
-              dragConstraints={{ left: 0, right: 0 }} // Constrain drag to prevent unwanted movement
-              dragElastic={0.2} // Add a slight elasticity effect
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -561,7 +551,6 @@ const Projects = ({ ref }: ProjectsProps) => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Navigation Arrows Inside the MacBook Screen */}
               <motion.button
                 onClick={handlePrev}
                 className="absolute top-1/2 left-4 transform -translate-y-1/2 p-3 bg-purple-600/70 rounded-full text-white hover:bg-purple-700/90 transition-colors"
@@ -607,7 +596,6 @@ const Projects = ({ ref }: ProjectsProps) => {
             </motion.div>
           </MacBookFrame>
 
-          {/* Dots for Navigation */}
           <div className="absolute bottom-0 flex justify-center space-x-2 mt-4">
             {projects.map((_, index) => (
               <motion.button
@@ -633,7 +621,6 @@ interface ProjectCardProps {
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <div className="group bg-gray-800/50 rounded-xl overflow-hidden border border-purple-900/50 hover:border-purple-500/50 transition-all duration-300 h-full flex flex-col">
-      {/* Image takes up most of the space */}
       <div className="relative overflow-hidden flex-1">
         <Image
           src={project.image || "/placeholder.svg"}
@@ -666,7 +653,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
       </div>
 
-      {/* Minimal space for Title, Description, Tech Stack, and Links */}
       <div className="p-4 space-y-2">
         <motion.a
           href={project.link}
@@ -680,7 +666,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <p className="text-gray-400 text-sm text-center">
           {project.description}
         </p>
-        {/* Tech Stack */}
         <div className="flex flex-wrap justify-center gap-1">
           {project.tech.map((tech: string, i: number) => (
             <span
@@ -963,7 +948,6 @@ const About = ({ ref }: AboutProps) => {
   );
 };
 
-// Existing Testimonials Component (unchanged)
 interface TestimonialsProps {
   ref: React.MutableRefObject<HTMLDivElement | null>;
 }
@@ -1114,7 +1098,6 @@ const Testimonials = ({ ref }: TestimonialsProps) => {
   );
 };
 
-// Existing CV Component (unchanged)
 interface CVProps {
   ref: React.MutableRefObject<HTMLDivElement | null>;
 }
@@ -1132,16 +1115,23 @@ const CV = ({ ref }: CVProps) => {
     {
       position: "Junior Full Stack Developer",
       company: "QmemDevs Tech Inc.",
-      period: "2021 - Present",
+      period: "2022 - Present",
       description:
         "Led development of multiple web applications using React, Node.js, and AWS. Implemented CI/CD pipelines and mentored junior developers.",
     },
     {
       position: "Web Developer intern",
       company: "Truest Tech Agency",
-      period: "2020 - 2020",
+      period: "2020 - mid-2020",
       description:
         "Built and maintained websites for various clients using JavaScript, HTML, and CSS. Implemented SEO best practices.",
+    },
+    {
+      position: "English Teacher",
+      company: "MH Language University",
+      period: "2019 - 2020",
+      description:
+        "Taught English language skills to  students, focusing on communication, writing, and comprehension. Developed engaging lesson plans and assessments.",
     },
   ];
 
@@ -1290,8 +1280,48 @@ const CV = ({ ref }: CVProps) => {
     </motion.section>
   );
 };
+const Banner = () => {
+  const svgContent = `
+    <svg width="100%" height="150" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMax meet">
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#2A1B3D;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#4B2E83;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="150" fill="url(#grad)" />
+      
+      <g transform="translate(0, 0)">
+        <path d="M0,100 Q200,50 400,100 T800,50 T1200,100" fill="none" stroke="#E6E6FA" stroke-width="2">
+          <animate attributeName="d" dur="4s" repeatCount="indefinite"
+            values="M0,100 Q200,50 400,100 T800,50 T1200,100;
+                    M0,90 Q200,60 400,90 T800,60 T1200,90;
+                    M0,100 Q200,50 400,100 T800,50 T1200,100"
+            keyTimes="0;0.5;1" />
+        </path>
+        <circle cx="100" cy="80" r="10" fill="#E6E6FA">
+          <animateMotion dur="4s" repeatCount="indefinite" path="M100,80 A50,50 0 0,1 200,80" />
+        </circle>
+        <circle cx="500" cy="70" r="15" fill="#E6E6FA">
+          <animateMotion dur="4s" repeatCount="indefinite" path="M500,70 A70,70 0 0,1 600,70" />
+        </circle>
+        <circle cx="900" cy="90" r="12" fill="#E6E6FA">
+          <animateMotion dur="4s" repeatCount="indefinite" path="M900,90 A60,60 0 0,1 1000,90" />
+        </circle>
+      </g>
+      
+      <text x="600" y="75" font-family="Arial" font-size="30" fill="#E6E6FA" text-anchor="middle">Tech Innovations</text>
+    </svg>
+  `;
 
-// Existing Skills Component (unchanged)
+  return (
+    <div
+      className="w-full h-[150px] overflow-visible" // Ensure height is set and overflow is visible
+      dangerouslySetInnerHTML={{ __html: svgContent }}
+    />
+  );
+};
+
 interface Skill {
   name: string;
   percentage: number;
@@ -1432,7 +1462,6 @@ const SkillBar = ({ skill, index }: SkillBarProps) => {
   );
 };
 
-// Existing Footer Component (unchanged)
 const Footer = () => {
   return (
     <footer className="py-8 border-t border-gray-800">
