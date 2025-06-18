@@ -45,10 +45,9 @@ export async function POST(request: Request) {
     const mailOptionsToUser = {
       from: `"Nahom Tewodros" <${process.env.SMTP_USER}>`,
       to: email,
-      subject: "Thank You for Your Message",
+      subject: "Contact message delivery notification ",
       text: `Hi ${name},\n\nThank you for reaching out! I've received your message and will get back to you soon.\n\nBest,\nNahom Tewodros`,
       html: `
-        <h2>Thank You for Your Message</h2>
         <p>Hi ${name},</p>
         <p>Thank you for reaching out! I've received your message and will get back to you soon.</p>
         <p>Best,<br>Nahom Tewodros</p>
