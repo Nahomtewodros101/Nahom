@@ -92,7 +92,6 @@ export default function Portfolio() {
         <main className="container mx-auto px-4 pt-20">
           <Hero ref={sectionRefs.home} />
           <About ref={sectionRefs.about} />
-          <Banner /> {/* Banner placed here between About and Projects */}
           <Projects ref={sectionRefs.projects} />
           <Testimonials ref={sectionRefs.testimonials} />
           <CV ref={sectionRefs.cv} />
@@ -151,7 +150,7 @@ const Header = ({
           className="text-2xl font-bold bg-clip-text text-transparent bg-white"
           whileHover={{ scale: 1.05 }}
         >
-          Nahom
+          <Link href="/">Nahom</Link>
         </motion.div>
 
         <nav className="hidden md:flex space-x-6">
@@ -174,11 +173,11 @@ const Header = ({
 
         <motion.div
           whileTap={{ scale: 0.95 }}
-          className="hidden md:flex items-center space-x-2 bg-white hover:bg-white/80 px-4 py-2 rounded-full text-sm font-bold shadow-lg cursor-pointer transition duration-300"
+          className="hidden md:flex items-center space-x-2 bg-purple-700 hover:bg-purple-500 px-4 py-2 rounded-full text-sm font-bold shadow-lg cursor-pointer transition duration-300"
         >
           <Link
             href="/contact"
-            className="flex items-center space-x-2 text-black"
+            className="flex items-center space-x-2 text-white"
           >
             <span>Contact</span>
           </Link>
@@ -595,19 +594,6 @@ const Projects = ({ ref }: ProjectsProps) => {
               </motion.button>
             </motion.div>
           </MacBookFrame>
-
-          <div className="absolute bottom-0 flex justify-center space-x-2 mt-4">
-            {projects.map((_, index) => (
-              <motion.button
-                key={index}
-                onClick={() => setActiveProjectIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                  activeProjectIndex === index ? "bg-purple-500" : "bg-gray-700"
-                }`}
-                whileHover={{ scale: 1.2 }}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </motion.section>
@@ -768,9 +754,9 @@ const About = ({ ref }: AboutProps) => {
   ];
 
   const hobbies = [
-    { name: "Tech", icon: "💻" },
     { name: "Hiking", icon: "🥾" },
     { name: "Chess", icon: "♟️" },
+    { name: "Vibe Coding", icon: "💻" },
     { name: "Games", icon: "🎮" },
     { name: "Coffee", icon: "☕" },
     { name: "Music", icon: "🎵" },
@@ -1133,6 +1119,13 @@ const CV = ({ ref }: CVProps) => {
       description:
         "Taught English language skills to  students, focusing on communication, writing, and comprehension. Developed engaging lesson plans and assessments.",
     },
+    {
+      position: " Junior Programming language trainer",
+      company: "Qmem Cloud Solutions",
+      period: "2020 - 2022",
+      description:
+        " At qmem cloud i was one of the top interns who worked remotely from home during the covid pandemic, and i virtually instructed multiple people who where applying for interneships as well as clients from  qmem cloud ",
+    },
   ];
 
   const education = [
@@ -1142,6 +1135,20 @@ const CV = ({ ref }: CVProps) => {
       period: "2021 - 2025",
       description:
         "Learned web development using JavaScript, HTML, and CSS. Participated in coding competitions and lab projects.",
+    },
+    {
+      degree: "Certifications and educational transcripts",
+      institution: "Free code camp organization",
+      period: "2023",
+      description:
+        "Gained real world simulating problems , solutions and i got certified for the work i gave .",
+    },
+    {
+      degree: "Linkedin Learning",
+      institution: "Programming & software development assesment",
+      period: "2024",
+      description:
+        "At the well known corprate platform i was assesed on the profesinal technica skills i have and i got verfied badges after  .",
     },
   ];
 
@@ -1280,47 +1287,6 @@ const CV = ({ ref }: CVProps) => {
     </motion.section>
   );
 };
-const Banner = () => {
-  const svgContent = `
-    <svg width="100%" height="150" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMax meet">
-      <defs>
-        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#2A1B3D;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#4B2E83;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <rect width="1200" height="150" fill="url(#grad)" />
-      
-      <g transform="translate(0, 0)">
-        <path d="M0,100 Q200,50 400,100 T800,50 T1200,100" fill="none" stroke="#E6E6FA" stroke-width="2">
-          <animate attributeName="d" dur="4s" repeatCount="indefinite"
-            values="M0,100 Q200,50 400,100 T800,50 T1200,100;
-                    M0,90 Q200,60 400,90 T800,60 T1200,90;
-                    M0,100 Q200,50 400,100 T800,50 T1200,100"
-            keyTimes="0;0.5;1" />
-        </path>
-        <circle cx="100" cy="80" r="10" fill="#E6E6FA">
-          <animateMotion dur="4s" repeatCount="indefinite" path="M100,80 A50,50 0 0,1 200,80" />
-        </circle>
-        <circle cx="500" cy="70" r="15" fill="#E6E6FA">
-          <animateMotion dur="4s" repeatCount="indefinite" path="M500,70 A70,70 0 0,1 600,70" />
-        </circle>
-        <circle cx="900" cy="90" r="12" fill="#E6E6FA">
-          <animateMotion dur="4s" repeatCount="indefinite" path="M900,90 A60,60 0 0,1 1000,90" />
-        </circle>
-      </g>
-      
-      <text x="600" y="75" font-family="Arial" font-size="30" fill="#E6E6FA" text-anchor="middle">Tech Innovations</text>
-    </svg>
-  `;
-
-  return (
-    <div
-      className="w-full h-[150px] overflow-visible" // Ensure height is set and overflow is visible
-      dangerouslySetInnerHTML={{ __html: svgContent }}
-    />
-  );
-};
 
 interface Skill {
   name: string;
@@ -1345,12 +1311,16 @@ const Skills = ({ ref }: SkillsProps) => {
     { name: "React", percentage: 90 },
     { name: "Node.js", percentage: 85 },
     { name: "TypeScript", percentage: 80 },
+    { name: "Dev-ops", percentage: 55 },
+    { name: "Cloud Related skills", percentage: 30 },
+    { name: "Database Management", percentage: 80 },
     { name: "Next.js", percentage: 90 },
     { name: "HTML/CSS", percentage: 95 },
   ];
 
   const softSkills: Skill[] = [
     { name: "Problem Solving", percentage: 90 },
+
     { name: "Communication", percentage: 80 },
     { name: "Teamwork", percentage: 90 },
     { name: "Time Management", percentage: 80 },
