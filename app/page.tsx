@@ -250,7 +250,7 @@ const Hero = ({ ref }: HeroProps) => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              Full Stack Developer
+             Javascript Based Full Stack Web Developer
             </motion.h2>
           </div>
           <hr className="border-gray-700" />
