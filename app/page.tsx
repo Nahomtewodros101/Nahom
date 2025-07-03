@@ -250,7 +250,7 @@ const Hero = ({ ref }: HeroProps) => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-             Javascript Based Full Stack Web Developer
+              Javascript Based Full Stack Web Developer
             </motion.h2>
           </div>
           <hr className="border-gray-700" />
@@ -482,6 +482,23 @@ const Projects = ({ ref }: ProjectsProps) => {
       ],
       link: "https://shopendaw.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/shopendaw.git",
+    },
+    {
+      title: "Skyvlog",
+      description:
+        "A modern Blogging platform made for users to share their daily lifestyle blogs.",
+      image: "/fundo.svg",
+      tech: [
+        "Next.js",
+        "Tailwind CSS",
+        "Shadcn ui",
+        "Typescript",
+        "Mongodb",
+        "Vercel",
+        "Prisma",
+      ],
+      link: "https://skyblog-sigma.vercel.app/",
+      githubLink: "https://github.com/Nahomtewodros101/skyblog.git",
     },
   ];
 
