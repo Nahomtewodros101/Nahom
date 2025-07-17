@@ -415,6 +415,26 @@ const Projects = ({ ref }: ProjectsProps) => {
 
   const projects: Project[] = [
     {
+      title: "MJDAT BPO SOLUTIONS",
+      description:
+        "A Business Process Outsourcing (BPO) company that provides a wide range of services to help businesses streamline their operations and improve efficiency.",
+      image: "/mjdats.png",
+      tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
+      link: "https://bpo-plum.vercel.app/",
+      githubLink: "https://github.com/Nahomtewodros101/BpoMjdat.git",
+    },
+    {
+      title: "Chapa expense Tracker",
+      description:
+        "A mobile app that allows users to track their expenses and manage their budget.",
+      image: "/chapa.png",
+      tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
+      link: "https://chapa-expense-tracker.vercel.app/",
+      githubLink:
+        "https://github.com/Nahomtewodros101/Chapa-Expense-Tracker.git",
+    },
+
+    {
       title: "Angles Touch",
       description:
         "A website for an adult care organization in Spokane Valley, WA, USA. They use the website to show themselves to their customers, and customers can contact them directly from the website.",
