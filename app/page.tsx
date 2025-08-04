@@ -520,6 +520,23 @@ const Projects = ({ ref }: ProjectsProps) => {
       link: "https://skyblog-sigma.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/skyblog.git",
     },
+    {
+      title: "Kodis Logistics",
+      description:
+        "A modern Logistics platform made for users to share their daily lifestyle blogs.",
+      image: "/kodis.jpg",
+      tech: [
+        "Next.js",
+        "Tailwind CSS",
+        "Shadcn ui",
+        "Typescript",
+        "Mongodb",
+        "Vercel",
+        "Prisma",
+      ],
+      link: "https://kodis.vercel.app/",
+      githubLink: "https://github.com/Nahomtewodros101/fundo.git",
+    }
   ];
 
   const handleNext = () => {
