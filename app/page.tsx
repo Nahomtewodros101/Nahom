@@ -415,6 +415,15 @@ const Projects = ({ ref }: ProjectsProps) => {
 
   const projects: Project[] = [
     {
+      title: "Warka Properties",
+      description:
+        "A Modern Website For a Property Sales Company Called Warka ",
+      image: "/warka.png",
+      tech: ["Vite", "Tailwind CSS", "Shadcn ui"],
+      link: "https://warkapropertiess.vercel.app/#home",
+      githubLink: "https://github.com/Nahomtewodros101/warka",
+    },
+    {
       title: "MJDAT BPO SOLUTIONS",
       description:
         "A Business Process Outsourcing (BPO) company that provides a wide range of services to help businesses streamline their operations and improve efficiency.",
@@ -422,16 +431,6 @@ const Projects = ({ ref }: ProjectsProps) => {
       tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
       link: "https://bpo-plum.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/BpoMjdat.git",
-    },
-    {
-      title: "Chapa expense Tracker",
-      description:
-        "A mobile app that allows users to track their expenses and manage their budget.",
-      image: "/chapa.png",
-      tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
-      link: "https://chapa-expense-tracker.vercel.app/",
-      githubLink:
-        "https://github.com/Nahomtewodros101/Chapa-Expense-Tracker.git",
     },
 
     {
@@ -442,23 +441,6 @@ const Projects = ({ ref }: ProjectsProps) => {
       tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
       link: "https://angelstouchafh.com/",
       githubLink: "https://github.com/Nahomtewodros101",
-    },
-    {
-      title: "Qmem CRM",
-      description:
-        "A CRM system for Qemem Devs to manage their clients and projects effectively.",
-      image: "/crm.png",
-      tech: [
-        "Next.js",
-        "Tailwind CSS",
-        "Shadcn ui",
-        "Typescript",
-        "Mongodb",
-        "Vercel",
-        "Prisma",
-      ],
-      link: "https://qmem-crm-wine.vercel.app/",
-      githubLink: "https://github.com/Nahomtewodros101/Qmem-CRM.git",
     },
     {
       title: "RiseUp, A Qemem Devs Portfolio",
@@ -477,6 +459,34 @@ const Projects = ({ ref }: ProjectsProps) => {
       link: "https://rise-up-chi.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/RiseUp.git",
     },
+    {
+      title: "Chapa expense Tracker",
+      description:
+        "A mobile app that allows users to track their expenses and manage their budget.",
+      image: "/chapa.png",
+      tech: ["Next.js", "Tailwind CSS", "Shadcn ui", "Typescript"],
+      link: "https://chapa-expense-tracker.vercel.app/",
+      githubLink:
+        "https://github.com/Nahomtewodros101/Chapa-Expense-Tracker.git",
+    },
+    {
+      title: "Qmem CRM",
+      description:
+        "A CRM system for Qemem Devs to manage their clients and projects effectively.",
+      image: "/crm.png",
+      tech: [
+        "Next.js",
+        "Tailwind CSS",
+        "Shadcn ui",
+        "Typescript",
+        "Mongodb",
+        "Vercel",
+        "Prisma",
+      ],
+      link: "https://qmem-crm-wine.vercel.app/",
+      githubLink: "https://github.com/Nahomtewodros101/Qmem-CRM.git",
+    },
+
     {
       title: "Lead Generation Website",
       description:
@@ -536,7 +546,7 @@ const Projects = ({ ref }: ProjectsProps) => {
       ],
       link: "https://kodis.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/fundo.git",
-    }
+    },
   ];
 
   const handleNext = () => {
@@ -545,7 +555,7 @@ const Projects = ({ ref }: ProjectsProps) => {
 
   const handlePrev = () => {
     setActiveProjectIndex((prev) =>
-      prev === 0 ? projects.length - 1 : prev - 1
+      prev === 0 ? projects.length - 1 : prev - 1,
     );
   };
 
