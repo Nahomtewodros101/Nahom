@@ -1209,10 +1209,10 @@ const CV = ({ ref }: CVProps) => {
     },
     {
       degree: "Linkedin Learning",
-      institution: "Programming & software development assesment",
+      institution: "Programming & software development assessment",
       period: "2024",
       description:
-        "At the well known corprate platform i was assesed on the profesinal technica skills i have and i got verfied badges after  .",
+        "At the well known corprate platform i was assessed on the profesinal technica skills i have and i got verified badges after  .",
     },
   ];
 
