@@ -146,13 +146,6 @@ const Header = ({
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <motion.div
-          className="text-2xl font-bold bg-clip-text text-transparent bg-white"
-          whileHover={{ scale: 1.05 }}
-        >
-          <Link href="/">Nahom</Link>
-        </motion.div>
-
         <nav className="hidden md:flex space-x-6">
           {sections.map((section) => (
             <motion.button
@@ -171,17 +164,7 @@ const Header = ({
           ))}
         </nav>
 
-        <motion.div
-          whileTap={{ scale: 0.95 }}
-          className="hidden md:flex items-center space-x-2 bg-purple-700 hover:bg-purple-500 px-4 py-2 rounded-full text-sm font-bold shadow-lg cursor-pointer transition duration-300"
-        >
-          <Link
-            href="/contact"
-            className="flex items-center space-x-2 text-white"
-          >
-            <span>Contact</span>
-          </Link>
-        </motion.div>
+        
       </div>
     </motion.header>
   );
@@ -432,7 +415,15 @@ const Projects = ({ ref }: ProjectsProps) => {
       link: "https://bpo-plum.vercel.app/",
       githubLink: "https://github.com/Nahomtewodros101/BpoMjdat.git",
     },
-
+    {
+      title: "Tactix Fantasy Website",
+      description:
+        "A Website Made For A Fantacy Premier League Game Application",
+      image: "/tactix.png",
+      tech: ["React", "Tailwind CSS", "Shadcn ui"],
+      link: "https://www.jointactix.app/",
+      githubLink: "https://github.com/Tactix-LLC/demo",
+    },
     {
       title: "Angles Touch",
       description:
