@@ -163,8 +163,6 @@ const Header = ({
             </motion.button>
           ))}
         </nav>
-
-        
       </div>
     </motion.header>
   );
@@ -252,9 +250,36 @@ const Hero = ({ ref }: HeroProps) => {
             everything in between.
           </motion.p>
           <Link href="/contact">
-            <Button className="mt-6 bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg transition-all">
-              contact me!
-            </Button>
+            <div className="flex space-x-6 mt-7 md:mb-0">
+              <Button className=" bg-purple-600 hover:bg-purple-700 text-white py-6  px-6 rounded-lg transition-all">
+                Contact Me!
+              </Button>
+              <motion.a
+                href="https://github.com/Nahomtewodros101"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 mt-3 hover:text-white"
+                whileHover={{ y: -5 }}
+              >
+                <Github size={20} />
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/nahom-tewodros/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 mt-3 hover:text-white"
+                whileHover={{ y: -5 }}
+              >
+                <Linkedin size={20} />
+              </motion.a>
+              <motion.a
+                href="mailto:nahomtewodrosm@gmail.com"
+                className="text-gray-400 mt-3 hover:text-white"
+                whileHover={{ y: -5 }}
+              >
+                <Mail size={20} />
+              </motion.a>
+            </div>
           </Link>
         </motion.div>
 
